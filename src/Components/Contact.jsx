@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../assets/css/style.css";
-import { FaAws, FaMicrosoft, FaDocker } from "react-icons/fa";
+//import { FaAws, FaMicrosoft, FaDocker } from "react-icons/fa";
 import { SiKubernetes, SiTerraform } from "react-icons/si";
 
 const certifications = [

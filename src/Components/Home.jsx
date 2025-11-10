@@ -2,7 +2,7 @@
 import React from 'react';
 import { Container, Button } from 'react-bootstrap';
 import { ReactTyped } from 'react-typed'; // ✅ fixed import
-import logo from '../assets/images/logo.png';
+//import logo from '../assets/images/logo.png';
 import '../assets/css/style.css';
 import { motion } from 'framer-motion';
 
