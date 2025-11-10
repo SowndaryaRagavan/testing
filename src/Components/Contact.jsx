@@ -2,8 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import "../assets/css/style.css";
-import { FaMicrosoft } from "react-icons/fa";
-import { SiKubernetes, SiTerraform } from "react-icons/si";
+//import { FaMicrosoft } from "react-icons/fa";
+import { SiKubernetes, SiTerraform, } from "react-icons/si";
+
+//import { SiKubernetes, SiTerraform } from "react-icons/si";
 
 const certifications = [
   {
@@ -16,13 +18,13 @@ const certifications = [
     id: 2,
     title: "Microsoft Certified: Azure Fundamentals (AZ-900)",
     credential: "Credential ID: 14AC0D6847460314",
-    icon: <FaMicrosoft className="cert-icon" />,
+    icon: <SiKubernetes className="cert-icon" />,
   },
   {
     id: 3,
     title: "Microsoft Certified: Azure Administrator Associate (AZ-104)",
     credential: "Credential ID: D88FDF4DA1F5444E",
-    icon: <FaMicrosoft className="cert-icon" />,
+    icon: <SiKubernetes className="cert-icon" />,
   },
   {
     id: 4,
