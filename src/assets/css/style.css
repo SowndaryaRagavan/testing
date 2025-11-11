@@ -701,3 +701,127 @@ footer {
   background: rgba(255, 204, 0, 0.1);
   transform: translateY(-3px);
 }
+
+
+/* ===== Portfolio Images ===== */
+.portfolio-images img {
+  width: 100%;        /* makes images responsive */
+  max-width: 300px;   /* set max width */
+  height: auto;       /* maintain aspect ratio */
+  object-fit: cover;  /* crop nicely if needed */
+  border-radius: 8px; /* optional: rounded corners */
+  margin: 5px 0;      /* spacing between images */
+}
+
+.image-scroll-wrapper {
+  overflow-x: auto;   /* horizontal scroll if multiple images */
+}
+
+.image-scroll {
+  display: flex;
+  gap: 10px;          /* spacing between images in scroll */
+}
+
+
+/* ===== Portfolio Carousel Style ===== */
+.portfolio-images {
+  overflow-x: auto;          /* enable horizontal scroll */
+  padding-bottom: 10px;      /* some spacing below images */
+  scroll-behavior: smooth;   /* smooth scrolling */
+}
+
+.image-scroll {
+  display: flex;
+  gap: 15px;                 /* space between images */
+}
+
+.image-scroll img {
+  flex-shrink: 0;            /* prevents image from shrinking */
+  width: 250px;              /* fixed width for uniformity */
+  height: 180px;             /* fixed height */
+  object-fit: cover;         /* crop nicely */
+  border-radius: 10px;       /* rounded corners */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.image-scroll img:hover {
+  transform: scale(1.05);    /* slight zoom on hover */
+}
+
+
+/* ===== Portfolio Buttons ===== */
+.portfolio-links {
+  margin-top: 15px;
+  display: flex;
+  gap: 15px;
+}
+
+.portfolio-link {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: #FFD700; /* gold */
+  color: #111;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
+}
+
+/* ===== Portfolio Card Layout ===== */
+.portfolio-card-split {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 30px;
+  margin-bottom: 50px;
+  align-items: flex-start;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.portfolio-info {
+  flex: 1;
+  min-width: 250px;
+}
+
+.portfolio-images {
+  flex: 1;
+  min-width: 250px;
+  overflow-x: auto;
+}
+
+.image-scroll {
+  display: flex;
+  gap: 15px;
+}
+
+.image-scroll img {
+  flex-shrink: 0;
+  width: 250px;      /* fixed width */
+  height: 180px;     /* fixed height */
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease;
+}
+
+.image-scroll img:hover {
+  transform: scale(1.05);
+}
+
+/* Horizontal scroll hides scrollbar for clean look */
+.portfolio-images::-webkit-scrollbar {
+  height: 8px;
+}
+.portfolio-images::-webkit-scrollbar-thumb {
+  background-color: #FFD700;
+  border-radius: 4px;
+}

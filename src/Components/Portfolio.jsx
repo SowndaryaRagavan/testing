@@ -1,25 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "../assets/css/style.css";
 import { motion } from "framer-motion";
 
 const Portfolio = () => {
   const [projects, setProjects] = useState([]);
+  const scrollRefs = useRef({}); // store refs for auto-scroll
 
   // Fetch projects from FastAPI backend
   useEffect(() => {
-    fetch("http://127.0.0.1:8000/projects")
+    fetch("https://myfolio-backend-a6o6.onrender.com/projects")
       .then((res) => res.json())
       .then((data) => setProjects(data))
-      .catch((err) => console.error("Error fetching projects:", err));
+      .catch((err) => console.error(err));
   }, []);
 
+  // Auto-scroll effect with hover pause
   useEffect(() => {
-  fetch("https://myfolio-backend-a6o6.onrender.com/projects")
-    .then(res => res.json())
-    .then(data => setProjects(data))
-    .catch(err => console.error(err));
-}, []);
+    const intervals = [];
 
+    projects.forEach((proj) => {
+      const scrollContainer = scrollRefs.current[proj.id];
+      if (scrollContainer) {
+        let isHovered = false;
+
+        scrollContainer.addEventListener("mouseenter", () => {
+          isHovered = true;
+        });
+        scrollContainer.addEventListener("mouseleave", () => {
+          isHovered = false;
+        });
+
+        intervals.push(
+          setInterval(() => {
+            if (!isHovered) {
+              if (scrollContainer.scrollLeft >= scrollContainer.scrollWidth / 2) {
+                scrollContainer.scrollLeft = 0;
+              } else {
+                scrollContainer.scrollLeft += 1; // adjust speed here
+              }
+            }
+          }, 20)
+        );
+      }
+    });
+
+    return () => intervals.forEach((i) => clearInterval(i));
+  }, [projects]);
 
   return (
     <section
@@ -90,8 +116,11 @@ const Portfolio = () => {
               </div>
             </div>
 
-            {/* Right side - Animated scrolling images */}
-            <div className="portfolio-images">
+            {/* Right side - Auto-scrolling images */}
+            <div
+              className="portfolio-images"
+              ref={(el) => (scrollRefs.current[proj.id] = el)}
+            >
               {proj.image_url ? (
                 (() => {
                   let images = [];
@@ -103,16 +132,14 @@ const Portfolio = () => {
                   }
 
                   return (
-                    <div className="image-scroll-wrapper">
-                      <div className="image-scroll">
-                        {images.concat(images).map((img, index) => (
-                          <img
-                            key={index}
-                            src={img}
-                            alt={`${proj.title}-${index}`}
-                          />
-                        ))}
-                      </div>
+                    <div className="image-scroll">
+                      {images.concat(images).map((img, index) => (
+                        <img
+                          key={index}
+                          src={img}
+                          alt={`${proj.title}-${index}`}
+                        />
+                      ))}
                     </div>
                   );
                 })()
