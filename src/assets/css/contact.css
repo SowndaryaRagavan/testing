@@ -1,0 +1,116 @@
+/* SECTION THEME (Matches Services Page) */
+.cert-section {
+  background: linear-gradient(135deg, #1b1b2f, #2d2d44);
+  padding: 90px 0;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+}
+
+/* TITLE */
+.cert-title {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #ffcc00;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 50px;
+  animation: fadeInTitle 1.2s ease forwards;
+}
+
+@keyframes fadeInTitle {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* WRAPPER */
+.cert-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+}
+
+/* LEFT CARD */
+.cert-card {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 30px;
+  border-radius: 14px;
+  width: 360px;
+  text-align: center;
+  border-left: 4px solid #ffcc00;
+  box-shadow: 0 10px 25px rgba(255, 204, 0, 0.15);
+}
+
+.cert-card h3 {
+  color: #ffcc00;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.cert-card p {
+  font-size: 0.95rem;
+  opacity: 0.9;
+}
+
+/* ICON */
+.cert-icon-wrapper {
+  font-size: 50px;
+  color: #ffcc00;
+  margin-bottom: 15px;
+}
+
+/* CERTIFICATE IMAGE RIGHT SIDE */
+.cert-image {
+  width: 350px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(255, 204, 0, 0.2);
+  border: 2px solid rgba(255, 204, 0, 0.35);
+}
+
+/* GOLD FLOATING ACCENTS */
+.gold-accent {
+  position: absolute;
+  background: rgba(255, 204, 0, 0.12);
+  border-radius: 50%;
+  animation: floatAccent 7s ease-in-out infinite;
+}
+
+.a1 {
+  width: 85px;
+  height: 85px;
+  top: 12%;
+  left: 10%;
+}
+
+.a2 {
+  width: 130px;
+  height: 130px;
+  bottom: 12%;
+  right: 8%;
+  animation-delay: 2s;
+}
+
+@keyframes floatAccent {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-22px); }
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .cert-wrapper {
+    flex-direction: column;
+  }
+
+  .cert-image {
+    width: 290px;
+  }
+}
