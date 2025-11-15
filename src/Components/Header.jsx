@@ -4,17 +4,21 @@ import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link, animateScroll as scroll } from "react-scroll";
 import logo from "../assets/images/logo3.png";
 
+const menuItems = [
+  { label: "Home", to: "hero" },
+  { label: "About", to: "about" },
+  { label: "Portfolio", to: "portfolio" },
+  { label: "Experiences", to: "services" },
+  { label: "Certifications", to: "contact" },
+];
+
 const Header = () => {
   const [navbarScrolled, setNavbarScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setNavbarScrolled(true);
-      } else {
-        setNavbarScrolled(false);
-      }
+      setNavbarScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -35,32 +39,32 @@ const Header = () => {
             setMenuOpen(false);
           }}
         >
-         <img src={logo} alt="Sowndarya Logo" className="logo-img" />
+          <img src={logo} alt="Sowndarya Logo" className="logo-img" />
         </Navbar.Brand>
+
         <Navbar.Toggle
           aria-controls="basic-navbar-nav"
           onClick={() => setMenuOpen(!menuOpen)}
           className="custom-toggler"
         />
+
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            {["home", "about", "portfolio", "experiences", "certifications"].map(
-              (section) => (
-                <Link
-                  key={section}
-                  to={section}
-                  smooth={true}
-                  duration={500}
-                  spy={true}
-                  offset={-80}
-                  activeClass="active-link"
-                  className={`nav-link ${menuOpen ? "slide-in" : ""}`}
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {section.charAt(0).toUpperCase() + section.slice(1)}
-                </Link>
-              )
-            )}
+            {menuItems.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                smooth={true}
+                duration={600}
+                spy={true}
+                offset={-80}
+                activeClass="active-link"
+                className={`nav-link ${menuOpen ? "slide-in" : ""}`}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
           </Nav>
         </Navbar.Collapse>
       </Container>

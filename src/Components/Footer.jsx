@@ -1,7 +1,8 @@
 // src/components/Footer.jsx
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import logo from '../assets/images/logo.png';
+//import logo from '../assets/images/logo.png';
+import logo from "../assets/images/logo3.png";
 
 const Footer = () => {
   return (

@@ -704,53 +704,214 @@ footer {
 
 
 /* ===== Portfolio Images ===== */
-.portfolio-images img {
-  width: 100%;        /* makes images responsive */
-  max-width: 300px;   /* set max width */
-  height: auto;       /* maintain aspect ratio */
-  object-fit: cover;  /* crop nicely if needed */
-  border-radius: 8px; /* optional: rounded corners */
-  margin: 5px 0;      /* spacing between images */
+
+
+/*Contact */
+
+/* GOLD THEME (same as Services) */
+.cert-section {
+  padding: 60px 20px;
+  background: #f8f4e8; /* light gold background */
 }
 
-.image-scroll-wrapper {
-  overflow-x: auto;   /* horizontal scroll if multiple images */
+.cert-title {
+  text-align: center;
+  color: #c29b3a; /* gold */
+  font-size: 32px;
+  margin-bottom: 30px;
+  font-weight: 700;
 }
 
-.image-scroll {
+/* Container layout similar to services */
+.cert-flex-container {
   display: flex;
-  gap: 10px;          /* spacing between images in scroll */
+  gap: 30px;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-
-/* ===== Portfolio Carousel Style ===== */
-.portfolio-images {
-  overflow-x: auto;          /* enable horizontal scroll */
-  padding-bottom: 10px;      /* some spacing below images */
-  scroll-behavior: smooth;   /* smooth scrolling */
-}
-
-.image-scroll {
-  display: flex;
-  gap: 15px;                 /* space between images */
-}
-
-.image-scroll img {
-  flex-shrink: 0;            /* prevents image from shrinking */
-  width: 250px;              /* fixed width for uniformity */
-  height: 180px;             /* fixed height */
-  object-fit: cover;         /* crop nicely */
-  border-radius: 10px;       /* rounded corners */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+/* Matching card theme */
+.gold-card {
+  background: #fff8d9; /* soft gold card background */
+  border-left: 5px solid #c29b3a; /* gold accent */
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
   transition: transform 0.3s ease;
 }
 
-.image-scroll img:hover {
-  transform: scale(1.05);    /* slight zoom on hover */
+.gold-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Icon */
+.cert-icon-wrapper {
+  font-size: 42px;
+  color: #c29b3a;
+  margin-bottom: 12px;
+}
+
+/* Credential text */
+.cert-credential {
+  margin-top: 8px;
+  font-size: 15px;
+  color: #444;
+}
+
+/* Certificate image */
+.cert-image {
+  width: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Scroll animation match */
+.cert-anim-card {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.7s ease-out;
+}
+
+.cert-anim-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .cert-flex-container {
+    flex-direction: column;
+  }
 }
 
 
-/* ===== Portfolio Buttons ===== */
+.nav-link:hover {
+  color: #ffcc00 !important;
+  cursor: pointer;
+  transform: translateY(-2px);
+  transition: 0.2s ease;
+}
+
+
+/*Portfolio*/
+
+/* Left side card - gold theme */
+.portfolio-info.gold-card {
+  flex: 1;
+  min-width: 300px;
+  background: #FFD700; /* Gold background */
+  color: #111;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Right side rolling image */
+.portfolio-images {
+  flex: 1;
+  min-width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Image card styling */
+.portfolio-image-card {
+  width: 100%;
+  max-width: 350px; /* bigger */
+  height: 230px;    /* bigger */
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-image-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 30px rgba(255, 215, 0, 0.6);
+}
+
+
+
+
+/* Smooth continuous scrolling animation */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Portfolio Card Split */
+.portfolio-card-split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 50px;
+  align-items: flex-start;
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* Left info - limit width so right images stay inline */
+.portfolio-info {
+  flex: 0 0 45%; /* occupy max 45% of width */
+  min-width: 250px;
+  background-color: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+/* Portfolio Carousel Wrapper */
+.portfolio-carousel {
+  flex: 1;
+  overflow: hidden;
+  min-width: 300px;
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+}
+
+
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .portfolio-card-split {
+    flex-direction: column;
+  }
+  .portfolio-info,
+  .portfolio-carousel {
+    flex: 1 1 100%;
+    min-width: 100%;
+  }
+}
+
+/* Left info content */
+.portfolio-title {
+  color: #FFD700;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 3px #000;
+}
+
+.portfolio-desc {
+  color: #ddd;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.portfolio-tech {
+  font-weight: bold;
+  color: #ccc;
+}
+
+/* Restore GitHub/Demo Buttons */
 .portfolio-links {
   margin-top: 15px;
   display: flex;
@@ -774,54 +935,66 @@ footer {
   box-shadow: 0 6px 15px rgba(255, 215, 0, 0.5);
 }
 
-/* ===== Portfolio Card Layout ===== */
-.portfolio-card-split {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 30px;
-  margin-bottom: 50px;
-  align-items: flex-start;
-  background-color: #1a1a1a;
+
+
+
+
+
+/* Left info - match right card theme */
+.portfolio-info {
+  flex: 0 0 45%;
+  min-width: 250px;
+  height: 300px;
+  background-color: rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
   padding: 20px;
   border-radius: 12px;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.portfolio-info {
-  flex: 1;
-  min-width: 250px;
+.portfolio-info:hover {
+  background-color: rgba(255, 215, 0, 0.1); /* light gold hover */
+  transform: scale(1.02);
 }
 
-.portfolio-images {
-  flex: 1;
-  min-width: 250px;
-  overflow-x: auto;
-}
-
-.image-scroll {
-  display: flex;
-  gap: 15px;
-}
-
-.image-scroll img {
+/* Right Carousel - bigger cards */
+.carousel-card {
+  min-width: 400px;    /* bigger width */
+  height: 300px;       /* bigger height */
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
   flex-shrink: 0;
-  width: 250px;      /* fixed width */
-  height: 180px;     /* fixed height */
-  object-fit: cover;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
-.image-scroll img:hover {
+.carousel-card:hover {
+  background-color: rgba(255, 215, 0, 0.2);
   transform: scale(1.05);
 }
 
-/* Horizontal scroll hides scrollbar for clean look */
-.portfolio-images::-webkit-scrollbar {
-  height: 8px;
+
+.carousel-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 12px;
 }
-.portfolio-images::-webkit-scrollbar-thumb {
-  background-color: #FFD700;
-  border-radius: 4px;
+
+
+/* Carousel scroll animation remains the same */
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  animation: scroll-left 20s linear infinite;
 }
+
+
+/* Keyframes */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
