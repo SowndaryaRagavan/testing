@@ -4,12 +4,19 @@ import { motion } from "framer-motion";
 
 const Portfolio = () => {
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://myfolio-backend-a6o6.onrender.com/projects")
       .then((res) => res.json())
-      .then((data) => setProjects(data))
-      .catch((err) => console.error(err));
+      .then((data) => {
+        setProjects(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
 
   return (
@@ -31,10 +38,22 @@ const Portfolio = () => {
       </h2>
 
       <div className="portfolio-container">
-        {projects.length === 0 && (
+        {/* Skeleton Loader */}
+        {loading &&
+          Array.from({ length: 2 }).map((_, index) => (
+            <div key={index} className="portfolio-card-split skeleton-card">
+              <div className="skeleton skeleton-text title"></div>
+              <div className="skeleton skeleton-text description"></div>
+              <div className="skeleton skeleton-img"></div>
+            </div>
+          ))}
+
+        {/* No projects */}
+        {!loading && projects.length === 0 && (
           <p style={{ textAlign: "center", color: "#ccc" }}>No projects yet.</p>
         )}
 
+        {/* Render projects */}
         {projects.map((proj) => (
           <motion.div
             key={proj.id}
@@ -44,42 +63,40 @@ const Portfolio = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            {/* Left side - Project info */}
-            <motion.div
-                className="portfolio-info"
-                whileHover={{ scale: 1.02 }}
-              >
-                <h3 className="portfolio-title">{proj.title}</h3>
-                <p className="portfolio-desc">{proj.description}</p>
-                {proj.tech_stack && (
-                  <p className="portfolio-tech">Tech: {proj.tech_stack}</p>
+            {/* Project Info */}
+            <motion.div className="portfolio-info" whileHover={{ scale: 1.02 }}>
+              <h3 className="portfolio-title">{proj.title}</h3>
+              <p className="portfolio-desc">{proj.description}</p>
+
+              {proj.tech_stack && (
+                <p className="portfolio-tech">Tech: {proj.tech_stack}</p>
+              )}
+
+              <div className="portfolio-links">
+                {proj.github_link && (
+                  <a
+                    href={proj.github_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="portfolio-link"
+                  >
+                    GitHub
+                  </a>
                 )}
-                <div className="portfolio-links">
-                  {proj.github_link && (
-                    <a
-                      href={proj.github_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="portfolio-link"
-                    >
-                      GitHub
-                    </a>
-                  )}
-                  {proj.demo_link && (
-                    <a
-                      href={proj.demo_link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="portfolio-link"
-                    >
-                      Demo
-                    </a>
-                  )}
-                </div>
-              </motion.div>
+                {proj.demo_link && (
+                  <a
+                    href={proj.demo_link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="portfolio-link"
+                  >
+                    Demo
+                  </a>
+                )}
+              </div>
+            </motion.div>
 
-
-            {/* Right side - Carousel */}
+            {/* Carousel */}
             <div className="portfolio-carousel">
               <div className="carousel-track">
                 {proj.image_url &&
@@ -93,7 +110,11 @@ const Portfolio = () => {
                     }
 
                     return [...images, ...images].map((img, index) => (
-                      <motion.div key={index} className="carousel-card" whileHover={{ scale: 1.05 }}>
+                      <motion.div
+                        key={index}
+                        className="carousel-card"
+                        whileHover={{ scale: 1.05 }}
+                      >
                         <img src={img} alt={`${proj.title}-${index}`} />
                       </motion.div>
                     ));
