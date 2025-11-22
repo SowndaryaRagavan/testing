@@ -10,6 +10,7 @@ const menuItems = [
   { label: "Portfolio", to: "portfolio" },
   { label: "Experiences", to: "services" },
   { label: "Certifications", to: "contact" },
+  { label: "TypeScript Demo", to: "typescript-demo", external: true },
 ];
 
 const Header = () => {
@@ -50,21 +51,32 @@ const Header = () => {
 
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto">
-            {menuItems.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                smooth={true}
-                duration={600}
-                spy={true}
-                offset={-80}
-                activeClass="active-link"
-                className={`nav-link ${menuOpen ? "slide-in" : ""}`}
-                onClick={() => setMenuOpen(false)}
-              >
-                {item.label}
-              </Link>
-            ))}
+            {menuItems.map((item) =>
+    item.external ? (
+      <Nav.Link
+        key={item.to}
+        href="/typescript-demo"
+        className={`nav-link ${menuOpen ? "slide-in" : ""}`}
+        onClick={() => setMenuOpen(false)}
+      >
+        {item.label}
+      </Nav.Link>
+    ) : (
+      <Link
+        key={item.to}
+        to={item.to}
+        smooth={true}
+        duration={600}
+        spy={true}
+        offset={-80}
+        activeClass="active-link"
+        className={`nav-link ${menuOpen ? "slide-in" : ""}`}
+        onClick={() => setMenuOpen(false)}
+      >
+        {item.label}
+      </Link>
+    )
+  )}
           </Nav>
         </Navbar.Collapse>
       </Container>

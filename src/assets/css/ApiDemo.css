@@ -1,0 +1,175 @@
+.container {
+  max-width: 700px;
+  margin: 30px auto;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.message {
+  background-color: #d4edda;
+  color: #155724;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.form-card {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-field {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.add-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background-color: #0056b3;
+}
+
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.project-card {
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: box-shadow 0.2s ease;
+}
+
+.project-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #a71d2a;
+}
+
+
+.project-card.visible {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+
+/* ApiDemo.css - glassmorphism cards and animations */
+:root{
+  --glass-bg: rgba(255,255,255,0.12);
+  --glass-border: rgba(255,255,255,0.18);
+  --accent: #6c5ce7;
+}
+
+.api-demo-root {
+  width: 100%;
+}
+
+/* small grid used by ApiDemo component */
+.api-demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
+
+/* Reusable glass-card styles */
+.glass-card,
+.glass-card-large {
+  background: linear-gradient(135deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px) saturate(120%);
+  -webkit-backdrop-filter: blur(8px) saturate(120%);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 6px 20px rgba(12,12,20,0.36);
+  color: inherit;
+  cursor: pointer;
+  transform: translateY(18px);
+  opacity: 0;
+  transition: transform 420ms cubic-bezier(.2,.9,.2,1), opacity 420ms ease, box-shadow 300ms ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.glass-card.visible,
+.glass-card-large.visible {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.glass-card:hover,
+.glass-card-large:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(12,12,40,0.5);
+}
+
+/* small card */
+.card-title { font-size: 1rem; margin: 0 0 6px; font-weight: 700; }
+.card-desc { font-size: 0.9rem; color: rgba(255,255,255,0.85); margin: 0 0 12px; }
+.card-actions { display:flex; justify-content:flex-end; }
+
+.view-btn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.view-btn:focus { outline: 2px solid rgba(108,92,231,0.28); }
+
+/* Larger grid used on TypeScriptDemo */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+/* Large glass card style for project list */
+.glass-card-large {
+  min-height: 160px;
+  padding: 20px;
+}
+
+/* inside card */
+.card-meta { margin-bottom: 12px; }
+.card-title { font-size: 1.15rem; color: #fff; }
+.card-desc { color: rgba(255,255,255,0.9); margin-top: 8px; }
+
+/* footer */
+.card-footer { display:flex; justify-content:flex-end; gap:8px; margin-top:auto; }
+
+/* modal + page specific classes are in TypeScriptDemo.css */

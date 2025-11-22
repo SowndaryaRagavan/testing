@@ -1,0 +1,120 @@
+/* TypeScriptDemo.css */
+.ts-demo-root {
+  min-height: 100vh;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #111;
+  background: linear-gradient(180deg, #f3eefc 0%, #e7e3ff 60%);
+}
+
+/* dark mode */
+.ts-demo-root.dark {
+  background: linear-gradient(180deg, #0f0f12 0%, #121212 60%);
+  color: #eee;
+}
+
+/* header */
+.ts-header {
+  position: sticky;
+  top: 0;
+  z-index: 1200;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  height:64px;
+  padding: 0 18px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  backdrop-filter: blur(6px);
+}
+.ts-demo-root.light .ts-header { background-color: #6c5ce7; color: white; }
+.ts-demo-root.dark .ts-header { background-color: rgba(20,20,24,0.6); color: white; }
+
+.ts-btn {
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+}
+.ts-btn.back { background: rgba(255,255,255,0.95); color: #6c5ce7; }
+.ts-btn.toggle { background: rgba(255,255,255,0.95); color: #6c5ce7; }
+
+/* main area */
+.ts-main { padding: 24px 20px 80px; max-width: 1200px; margin: 0 auto; }
+
+/* actions row */
+.actions-row { display:flex; gap:14px; justify-content:center; margin-bottom: 12px; }
+.primary { background: #6c5ce7; color: #fff; padding: 10px 18px; border-radius: 10px; border: none; cursor: pointer; font-weight:700; }
+.secondary { background: #00b894; color: #fff; padding: 10px 18px; border-radius: 10px; border: none; cursor: pointer; font-weight:700; }
+
+/* cards section entrance */
+.cards-section { opacity:0; transform:translateY(12px); transition: all 420ms cubic-bezier(.2,.9,.2,1); }
+.cards-section.visible { opacity:1; transform:translateY(0); }
+
+/* tech grid */
+.tech-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:18px; margin-top: 40px; }
+
+/* tech card */
+.tech-card { padding:18px; border-radius:12px; background: rgba(255,255,255,0.85); box-shadow: 0 10px 30px rgba(0,0,0,0.06); text-align:center; }
+.ts-demo-root.dark .tech-card { background: rgba(255,255,255,0.03); box-shadow: 0 8px 20px rgba(0,0,0,0.6); color:#fff; }
+.tech-icon { font-size:28px; margin-bottom:8px; color: #6c5ce7; }
+
+/* modal overlay */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(0,0,0,0.5);
+  z-index: 2000;
+  animation: fadeIn 220ms ease;
+}
+@keyframes fadeIn { from { opacity:0 } to { opacity:1 } }
+
+/* modal card */
+.modal-card {
+  width: 96%;
+  max-width: 680px;
+  padding: 20px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+  backdrop-filter: blur(8px);
+  box-shadow: 0 20px 50px rgba(12,12,30,0.6);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: inherit;
+  transform: translateY(-8px);
+}
+
+/* form elements inside modal */
+.modal-card label { display:block; margin-top:12px; margin-bottom:6px; font-weight:600; }
+.modal-card input[type="text"], .modal-card textarea {
+  width:100%; padding:10px; border-radius:8px; border:1px solid rgba(0,0,0,0.08);
+  background: rgba(255,255,255,0.95);
+}
+.ts-demo-root.dark .modal-card input[type="text"], .ts-demo-root.dark .modal-card textarea {
+  background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); color:#fff;
+}
+.modal-actions { display:flex; justify-content:flex-end; gap:12px; margin-top:14px; }
+
+/* responsive */
+@media (max-width: 720px) {
+  .cards-grid { grid-template-columns: 1fr; }
+  .tech-grid { grid-template-columns: 1fr; }
+}
+
+
+.projects-table-wrapper {
+  max-height: 0;
+  opacity: 0;
+}
+
+.projects-table-wrapper.slide-down {
+  max-height: 1200px;
+  opacity: 1;
+}
+
+.projects-table-wrapper.slide-up {
+  max-height: 0;
+  opacity: 0;
+}
