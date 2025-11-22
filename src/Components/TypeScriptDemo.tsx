@@ -27,6 +27,7 @@ const TypeScriptDemo: React.FC = () => {
   const [notification, setNotification] = useState<string | null>(null);
   const [showNotification, setShowNotification] = useState(false);
   const [techVisible, setTechVisible] = useState<number[]>([]);
+  const [uploading, setUploading] = useState(false); // <-- loading indicator
 
   const techStack = [
     { title: "TypeScript", desc: "Strongly typed JS.", icon: <Code size={30} /> },
@@ -67,6 +68,8 @@ const TypeScriptDemo: React.FC = () => {
       return alert("Fill all fields and upload a file.");
     }
 
+    setUploading(true); // start loading
+
     const formData = new FormData();
     formData.append("title", newProject.title);
     formData.append("description", newProject.description);
@@ -89,6 +92,8 @@ const TypeScriptDemo: React.FC = () => {
       setNotification("Failed to add project.");
       setShowNotification(true);
       setTimeout(() => setShowNotification(false), 3000);
+    } finally {
+      setUploading(false); // stop loading
     }
   };
 
@@ -143,7 +148,9 @@ const TypeScriptDemo: React.FC = () => {
               <input type="text" placeholder="Description" value={newProject.description} onChange={(e) => setNewProject({ ...newProject, description: e.target.value })} style={{ width: "100%", padding: 8, marginBottom: 10, borderRadius: 6 }} />
               <input type="file" onChange={(e) => setNewProject({ ...newProject, file: e.target.files ? e.target.files[0] : null })} style={{ marginBottom: 10 }} />
               <div style={{ display: "flex", justifyContent: "space-between" }}>
-                <button onClick={handleAddProject} style={{ padding: "8px 16px", borderRadius: 6, backgroundColor: "#00b894", color: "#fff", fontWeight: 600, cursor: "pointer" }}>Submit</button>
+                <button onClick={handleAddProject} disabled={uploading} style={{ padding: "8px 16px", borderRadius: 6, backgroundColor: "#00b894", color: "#fff", fontWeight: 600, cursor: uploading ? "not-allowed" : "pointer" }}>
+                  {uploading ? "Uploading..." : "Submit"}
+                </button>
                 <button onClick={() => setShowAddModal(false)} style={{ padding: "8px 16px", borderRadius: 6, backgroundColor: "#d63031", color: "#fff", fontWeight: 600, cursor: "pointer" }}>Clear</button>
               </div>
             </div>
