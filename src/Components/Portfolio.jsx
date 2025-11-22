@@ -99,26 +99,17 @@ const Portfolio = () => {
             {/* Carousel */}
             <div className="portfolio-carousel">
               <div className="carousel-track">
-                {proj.image_url &&
-                  (() => {
-                    let images = [];
-                    try {
-                      images = JSON.parse(proj.image_url);
-                      if (!Array.isArray(images)) images = [proj.image_url];
-                    } catch {
-                      images = [proj.image_url];
-                    }
-
-                    return [...images, ...images].map((img, index) => (
-                      <motion.div
-                        key={index}
-                        className="carousel-card"
-                        whileHover={{ scale: 1.05 }}
-                      >
-                        <img src={img} alt={`${proj.title}-${index}`} />
-                      </motion.div>
-                    ));
-                  })()}
+                {proj.images &&
+                  proj.images.length > 0 &&
+                  [...proj.images, ...proj.images].map((img, index) => (
+                    <motion.div
+                      key={index}
+                      className="carousel-card"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src={img} alt={`${proj.title}-${index}`} />
+                    </motion.div>
+                  ))}
               </div>
             </div>
           </motion.div>
