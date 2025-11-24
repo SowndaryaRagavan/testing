@@ -54,11 +54,14 @@ const TypeScriptDemo: React.FC = () => {
       console.error("Error fetching projects:", err);
     }
   };
+  
 
   useEffect(() => {
     fetchProjects();
     techStack.forEach((_, idx) => {
-      setTimeout(() => setTechVisible((prev) => [...prev, idx]), idx * 120);
+      setTimeout(() => {
+        setTechVisible((prev) => [...prev, idx]);
+      }, idx * 120);
     });
   }, []);
 
