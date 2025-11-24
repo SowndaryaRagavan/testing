@@ -1,7 +1,7 @@
 // src/components/About.jsx
 import React from "react";
 import "../assets/css/style.css";
-import profilePic from "../assets/images/profile.jpg"; // Replace with your photo path
+import profilePic from "../assets/images/profile.jpg"; 
 import { motion } from "framer-motion";
 
 const About = () => {
