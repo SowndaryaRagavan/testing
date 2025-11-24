@@ -36,12 +36,12 @@ const About = () => {
             I enjoy blending creativity and logic to build seamless digital
             experiences, automate deployments, and craft robust backend systems.
             Alongside my core development work, I’m currently expanding into the AI space, 
-            working on practical <b>generative AI and LLM-powered mini-projects</b> that enhance real-world workflows 
+            working on practical <b>generative AI</b> and <b>LLM-powered mini-projects</b> that enhance real-world workflows 
             and developer productivity.
           </p>
           <p>
             Currently based in <b>Australia</b>,I’m actively exploring exciting opportunities and projects 
-            that combine <b>full-stack engineering, cloud technologies, and applied AI</b> to make a meaningful impact.
+            that combine <b>full-stack engineering, cloud technologies,</b> and <b>AI</b> to make a meaningful impact.
 
           </p>
         </motion.div>
