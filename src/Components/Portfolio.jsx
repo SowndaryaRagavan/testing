@@ -99,9 +99,9 @@ const Portfolio = () => {
             {/* Carousel */}
             <div className="portfolio-carousel">
               <div className="carousel-track">
-                {proj.images &&
-                  proj.images.length > 0 &&
-                  [...proj.images, ...proj.images].map((img, index) => (
+                {Array.isArray(proj.image_url) &&
+                  proj.image_url.length > 0 &&
+                  [...proj.image_url, ...proj.image_url].map((img, index) => (
                     <motion.div
                       key={index}
                       className="carousel-card"
